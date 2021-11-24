@@ -18,6 +18,9 @@ export default makeStyles( ( theme ) => ( {
         width: '97%',
         margin: '10px 0',
     },
+    textfield: {
+        marginBottom: 10
+    },
     buttonSubmit: {
         marginBottom: 10,
     },
