@@ -4,8 +4,8 @@ const reducer = ( post = [], action ) =>
     {
         case "FETCH_ALL":
             return action.payload;
-        case "CREATE POST":
-            return post;
+        case "CREATE":
+            return [...post, action.payload];
 
         default:
             return post;
