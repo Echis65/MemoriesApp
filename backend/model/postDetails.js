@@ -11,9 +11,10 @@ const postSchema = mongoose.Schema(
             type: Date,
             default: new Date()
         },
-        message: String,
-        creator: String,
         tags: [String],
+        message: String,
+        comments:[String],
+        creator: String,
         selectedFile: String
     }
 )

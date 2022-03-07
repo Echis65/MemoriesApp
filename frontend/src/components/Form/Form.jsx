@@ -33,7 +33,7 @@ export default function Form()
                 <TextField className={classes.textfield} label="Creator" variant="outlined" name="creator" fullWidth value={postData.creator} onChange={( e ) => setPostData( { ...postData, creator: e.target.value } )} />
                 <TextField className={classes.textfield} label="Title" variant="outlined" name="title" fullWidth value={postData.title} onChange={( e ) => setPostData( { ...postData, title: e.target.value } )} />
                 <TextField className={classes.textfield} label="Message" variant="outlined" name="message" fullWidth value={postData.message} onChange={( e ) => setPostData( { ...postData, message: e.target.value } )} />
-                <TextField className={classes.textfield} label="Tags" variant="outlined" name="tags" fullWidth value={postData.tags} onChange={( e ) => setPostData( { ...postData, tags: e.target.value } )} />
+                <TextField className={classes.textfield} label="Tags(Comma separated)" variant="outlined" name="tags" fullWidth value={postData.tags} onChange={( e ) => setPostData( { ...postData, tags: e.target.value } )} />
                 <div className={classes.fileInput}>
                     <FileBase
                         type="file"
