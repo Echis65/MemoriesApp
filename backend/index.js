@@ -4,7 +4,6 @@ import mongoose from "mongoose"
 import cors from "cors"
 
 import postRoutes from "./Routes/posts.js"
-import { createPost } from "./controller/posts.js"
 
 
 const app = express()
