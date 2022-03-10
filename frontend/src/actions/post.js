@@ -37,7 +37,7 @@ export const createPost = ( post ) => async ( dispatch ) =>
     }
 
 }
-export const updatePost = (id, post) => (dispatch) => {
+export const updatedPost = (id, post) => async (dispatch) => {
     try {
         const{data} = await api.updatePost(id,post)
         const action = {

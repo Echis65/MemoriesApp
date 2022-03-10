@@ -1,4 +1,5 @@
 import postDetails from "../model/postDetails.js"
+import  Mongoose  from "mongoose"
 
 export const getPosts = async ( req, res ) =>
 {
@@ -31,8 +32,8 @@ export const createPost = async ( req, res ) =>
 export const updatePost = async(req, res) => {
     const { id: _id } = req.params;
     const post = req.body;
-    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("We cannot find this post")
+    if(!Mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("We cannot find this post");
 
-    const updatedPost = postDetails.findByIdAndUpdate(_id, post, {new: "true"})
-    res.status(201).json(updatedPost);
+    const updatedPost = await postDetails.findByIdAndUpdate(_id, post, {new: "true"});
+    res.json(updatedPost);
 }

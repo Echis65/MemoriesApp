@@ -17,7 +17,7 @@ export default function Posts({post, setCurrentId})
         </div>
         <div className={classes.overlay2}>
               <Button style={{color:"white"}} size="small" onClick={() => setCurrentId(post._id)}>
-                <MoreHorizIcon fontsize="default"/>
+                <MoreHorizIcon fontSize="default"/>
             </Button>
         </div>
         <div className={classes.details}>
@@ -41,7 +41,7 @@ export default function Posts({post, setCurrentId})
                   {post.likeCount }
                 </Button>
                 <Button size='small' color='primary' onClick={() => {}}>
-                  <DeleteIcon fontsize="small"/>
+                  <DeleteIcon fontSize="small"/>
                   Delete
                 </Button>
         </CardActions>
