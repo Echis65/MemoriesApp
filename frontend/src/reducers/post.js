@@ -4,6 +4,8 @@ const reducer = ( posts = [], action ) =>
     {
         case "FETCH_ALL":
             return action.payload;
+        case "DELETE":
+            return posts.filter((post) => post._id !== action.payload)
         case "UPDATE":
             return posts.map((posts) => (posts._id === action.payload._id) ? action.payload : posts);
         case "CREATE":

@@ -14,7 +14,7 @@ export const getPosts = () => async ( dispatch ) =>
 
     } catch ( error )
     {
-        console.log( error.message )
+        console.log( error )
     }
 
 }
@@ -33,7 +33,7 @@ export const createPost = ( post ) => async ( dispatch ) =>
 
     } catch ( error )
     {
-        console.log( error.message )
+        console.log( error )
     }
 
 }
@@ -48,4 +48,17 @@ export const updatedPost = (id, post) => async (dispatch) => {
     } catch (error) {
        console.log(error) 
     }
+}
+export const deletePost = (id) => async (dispatch) => {
+    await api.deletePost(id)
+    try {
+        const action = {
+            type:"DELETE",
+            payload: id
+        }
+        dispatch(action)
+    } catch (error) {
+        console.log(error)
+    }
+    
 }

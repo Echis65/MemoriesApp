@@ -23,7 +23,12 @@ export default function Form({currentId, setCurrentId})
    }, [post])
     const clear = () =>
     {
-
+         setCurrentId(null);
+         setPostData(  {creator: "",
+         title: "",
+         message: "",
+         tags: "",
+         selectedFile: ""})
     }
     const handleSubmit = ( e ) =>
     {
@@ -33,12 +38,13 @@ export default function Form({currentId, setCurrentId})
         }else{
             dispatch( createPost( postData ) )
         }
+        clear();
     }
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" className={classes.form} onSubmit={handleSubmit}>
                 <Typography variant="h6">
-                    Create Your Memory
+                   {currentId ? "Editing " : "Creating "}Your Memory
                 </Typography>
                 <TextField className={classes.textfield} label="Creator" variant="outlined" name="creator" fullWidth value={postData.creator} onChange={( e ) => setPostData( { ...postData, creator: e.target.value } )} />
                 <TextField className={classes.textfield} label="Title" variant="outlined" name="title" fullWidth value={postData.title} onChange={( e ) => setPostData( { ...postData, title: e.target.value } )} />
