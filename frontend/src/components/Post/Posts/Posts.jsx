@@ -3,7 +3,7 @@ import useStyles from "./style.jsx"
 import { Card, CardActions, CardMedia, CardContent,Button, Typography } from '@material-ui/core'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { deletePost } from '../../../actions/post.js';
+import { deletePost, updatedLikedPost } from '../../../actions/post.js';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useDispatch } from 'react-redux';
 import moment from "moment"
@@ -39,16 +39,17 @@ export default function Posts({post, setCurrentId})
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-        <Button size='small' color='primary' onClick={() => {
-        }}>
+        <Button size='small' color='primary' onClick={() => 
+          dispatch(updatedLikedPost(post._id))
+        }>
           <ThumbUpAltIcon fontSize='small'/>
-                  Like
-                  {post.likeCount }
+                  {`Like
+                   ${post.likeCount }`}
                 </Button>
                 <Button size='small' color='primary' onClick={() => 
                { let confirmationMessage = window.confirm("Are you sure you want to delete this post");
                 if(confirmationMessage){
-                  dispatch(deletePost(post._id))
+                  dispatch(deletePost(post._id)) 
                 }}
                 }>
                   <DeleteIcon fontSize="small"/>

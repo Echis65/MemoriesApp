@@ -7,6 +7,6 @@ router.get( "/", getPosts )
 router.post( "/", createPost )
 router.patch("/:id", updatePost )
 router.delete("/:id", deletePost)
-router.patch(":/id/likedPost", likePost)
+router.patch("/:id/likedPost", likePost)
 
 export default router;
