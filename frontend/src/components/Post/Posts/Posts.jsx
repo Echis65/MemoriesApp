@@ -43,7 +43,7 @@ export default function Posts({post, setCurrentId})
           dispatch(updatedLikedPost(post._id))
         }>
           <ThumbUpAltIcon fontSize='small'/>
-                  {`Like
+                   {` Like
                    ${post.likeCount }`}
                 </Button>
                 <Button size='small' color='primary' onClick={() => 
