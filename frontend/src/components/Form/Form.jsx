@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import useStyles from "./style.jsx"
 import { TextField, Button, Typography, Paper } from '@material-ui/core'
 import FileBase from "react-file-base64"
 import { useDispatch } from 'react-redux'
 import { createPost, updatedPost } from '../../actions/post.js'
+import useStyles from "./style.jsx"
 export default function Form({currentId, setCurrentId})
 { 
     const classes = useStyles()

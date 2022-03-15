@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './styles.js';
+
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core"
 import Post from "./components/Post/Post.jsx"
 /* import memories from "./Images/memories.png" */
