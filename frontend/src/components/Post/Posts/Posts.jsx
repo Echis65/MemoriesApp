@@ -13,7 +13,7 @@ export default function Posts({post, setCurrentId})
     const classes = useStyles()
     return (
       <Card className = {classes.card} >
-          <CardMedia  className={classes.media}  image={post.selectedFile} title={post.title} />
+          <CardMedia  className={classes.media}  image={post.selectedFile} title={post.title} component="div"/>
         <div className={classes.overlay}>
             <Typography variant="h6">{post.creator}</Typography>
             <Typography variant="body2">{moment(post.createdAt).local().fromNow()}</Typography>
