@@ -14,16 +14,17 @@ function App()
 
 
   return (
+    <BrowserRouter>
     <Container maxWidth="lg">
-      <BrowserRouter>
+    <Navbar />
       <Routes>
-        <Route path='/' exact component={Home}/>
-        <Route path='/auth' exact component={Auth}/>
+        <Route path='/auth'  element={<Auth />}/>
+        <Route path='/'  element={<Home />}/>
       </Routes>
+      </Container>
       </BrowserRouter>
-     <Navbar />
-      <Home />
-    </Container>
+    
+    
   );
 }
 

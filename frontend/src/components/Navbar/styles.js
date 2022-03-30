@@ -11,6 +11,9 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     padding: '10px 50px',
   },
+  header:{
+textDecoration: "none"
+  },
   heading: {
     color: 'rgba(0,183,255, 1)',
     textDecoration: 'none',
@@ -19,9 +22,9 @@ export default makeStyles((theme) => ({
     marginLeft: '15px',
   },
   toolbar: {
-    display: 'flex',
+    /* display: 'flex',
     justifyContent: 'flex-end',
-    width: '400px',
+    width: '400px', */
   },
   profile: {
     display: 'flex',
