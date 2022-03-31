@@ -1,6 +1,6 @@
 import React from 'react'
 import {  AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import useStyles from "./styles.js"
 
 
@@ -10,10 +10,9 @@ export default function Navbar() {
   return (
     <AppBar className={classes.appBar} position="sticky" color="inherit">
         <div className={classes.brandContainer}>
-        <Typography className={classes.header} component={Link} to="/" variant="h2" align="center">
+        <Typography className={classes.header} component={NavLink} to="/" variant="h2">
           Memories
         </Typography>
-        <img src="../../../Images/memories.png" className={classes.image} alt="memories" height="60" />
         </div>
        <Toolbar className={classes.toolbar}>
         {
@@ -25,7 +24,7 @@ export default function Navbar() {
                 </div>
               
             ): (
-<Button className={classes.signin} variant="contained" color="primary" component={Link} to="/auth">Sign In</Button>
+<Button className={classes.signin} variant="contained" color="primary" component={NavLink} to="/auth">Sign In</Button>
             )
         }
        </Toolbar>

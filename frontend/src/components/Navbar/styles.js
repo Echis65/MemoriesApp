@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { deepPurple } from '@material-ui/core/colors';
+import { pink } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   appBar: {
@@ -12,11 +12,17 @@ export default makeStyles((theme) => ({
     padding: '10px 50px',
   },
   header:{
-textDecoration: "none"
+textDecoration: "none",
+color : "black",
+fontFamily: 'Dancing Script',
   },
   heading: {
     color: 'rgba(0,183,255, 1)',
     textDecoration: 'none',
+  },
+  signin: {
+    color: theme.palette.getContrastText(pink[500]),
+    backgroundColor: pink[500],
   },
   image: {
     marginLeft: '15px',
@@ -40,7 +46,7 @@ textDecoration: "none"
     alignItems: 'center',
   },
   purple: {
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500],
+    /* color: theme.palette.getContrastText(deepPurple[500]),
+    backgroundColor: deepPurple[500], */
   },
 }));

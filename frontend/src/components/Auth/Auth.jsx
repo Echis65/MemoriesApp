@@ -1,7 +1,8 @@
+import { Typography } from '@material-ui/core'
 import React from 'react'
 
 export default function Auth() {
   return (
-    <div>Auth</div>
+    <Typography variant='h2' align='center'>Auth</Typography>
   )
 }
