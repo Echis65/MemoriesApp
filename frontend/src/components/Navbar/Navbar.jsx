@@ -25,7 +25,7 @@ export default function Navbar() {
                 </div>
               
             ): (
-<Button className={classes.signin} variant="contained" color="primary" component={NavLink} to="/auth">Sign In</Button>
+<Button className={classes.signin} variant="contained"  component={NavLink} to="/auth">Sign In</Button>
             )
         }
        </Toolbar>
