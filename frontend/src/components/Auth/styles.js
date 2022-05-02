@@ -13,6 +13,9 @@ export default makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  header:{
+    fontFamily: 'Dancing Script',
+      },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,

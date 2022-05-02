@@ -11,8 +11,9 @@ export default function Navbar() {
     <AppBar className={classes.appBar} position="sticky" color="inherit">
         <div className={classes.brandContainer}>
         <Typography className={classes.header} component={NavLink} to="/" variant="h2">
-          Memories
+          capture
         </Typography>
+       {/*  <img src="./images/redcam.jpg" alt="" className={classes.image} height="60" width="60"/> */}
         </div>
        <Toolbar className={classes.toolbar}>
         {

@@ -44,7 +44,7 @@ export default function Form({currentId, setCurrentId})
         <Paper className={classes.paper}>
             <form autoComplete="off" className={classes.form} onSubmit={handleSubmit}>
                 <Typography variant="h6">
-                   {currentId ? "Editing " : "Creating "}Your Memory
+                   {currentId ? "Editing " : "Create "}Your Memory
                 </Typography>
                 <TextField className={classes.form_field} label="Creator" variant="outlined" name="creator" fullWidth value={postData.creator} onChange={( e ) => setPostData( { ...postData, creator: e.target.value } )} />
                 <TextField className={classes.form_field} label="Title" variant="outlined" name="title" fullWidth value={postData.title} onChange={( e ) => setPostData( { ...postData, title: e.target.value } )} />
