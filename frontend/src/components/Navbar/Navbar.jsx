@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {  AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate, useLocation } from "react-router-dom"
 import useStyles from "./styles.js"
+import { LOGOUT } from '../../constants/ActionTypes.js'
 
 
 export default function Navbar() {
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const history = useNavigate()
+    const location = useLocation()
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
     console.log(user)
-    let token = user?.tokenId
+    const logout = () => {
+      dispatch({type : LOGOUT})
+      history("/")
+      setUser(null)
+    }
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem("profile")))  
-    }, [token])
+    }, [location])
   return (
     <AppBar className={classes.appBar} position="sticky" color="inherit">
         <div className={classes.brandContainer}>
@@ -26,7 +35,7 @@ export default function Navbar() {
                 <div className={classes.profile}>
                <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
                 <Typography className={classes.userName} variant="h6"> {user.result.name}</Typography>
-                <Button variant="contained" className={classes.signout} color="secondary">Sign Out</Button>
+                <Button variant="contained" className={classes.signout} color="secondary" onClick={logout}>Sign Out</Button>
                 </div>
               
             ): (
