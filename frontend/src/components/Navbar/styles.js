@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { pink } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   appBar: {
@@ -20,10 +19,10 @@ fontFamily: 'Dancing Script',
     color: 'rgba(0,183,255, 1)',
     textDecoration: 'none',
   },
-  signin: {
-    color: theme.palette.getContrastText(pink[500]),
-    backgroundColor: pink[500],
-  },
+  /* signin: {
+  
+    
+  }, */
   image: {
     marginLeft: '15px',
   },

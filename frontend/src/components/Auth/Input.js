@@ -13,14 +13,14 @@ export default function Input({name, label, handleChange, autoFocus, handleShowP
         fullWidth
         required
         autoFocus = {autoFocus}
-        inputProps = {(name === "password" &&{
+        inputProps = {(name === "password" ?{
             endadornment:(
                 <InputAdornment position='end'>
                 <IconButton onClick={handleShowPassword}/>
                 {type === "password" ? <Visibility/> : <VisibilityOff/>}
                 </InputAdornment>
             )
-        } )}
+        } : {null:null})} 
         />
     </Grid>
   )

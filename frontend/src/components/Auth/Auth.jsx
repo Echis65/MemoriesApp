@@ -1,22 +1,34 @@
 import React, {useState} from 'react'
 import {Container, Avatar, Button, Paper, Grid, Typography} from "@material-ui/core"
 import Input from "./Input"
+import { useDispatch } from 'react-redux'
 import  { LockOutlined } from "@material-ui/icons"
 import GoogleLogin from "react-google-login"
+import { AUTH } from "../../constants/ActionTypes"
+import { useNavigate } from 'react-router-dom'
 import useStyles from "./styles"
 
 export default function Auth() {
 const classes = useStyles();
 const [showPassword, setShowPassword] = useState(false);
-
+const dispatch = useDispatch()
+const history = useNavigate()
 const handleShowPassword = () => setShowPassword(previousVal => !previousVal)
 const handleSubmit = () => {
   console.log(1)
 }
-const handleSuccess = () => {
-
+const handleSuccess = async(res) => {
+let result = res?.profileObj;
+let tokenId = res?.tokenId;
+try {
+  dispatch({type : AUTH, data:{result, tokenId}})
+history("/")
+} catch (error) {
+  console.log(error)
 }
-const handleFailure = () => {
+}
+const handleFailure = (error) => {
+  console.log(error)
   console.log("Error Signing in with google. Try again Later")
 }
 const handleChange = () => {
@@ -64,6 +76,7 @@ const switchForm = () => {
 <GoogleLogin 
 clientId='716099661354-tvdh5tl9eun03cl8cdha5mlp8hfi6u7q.apps.googleusercontent.com'
 onSuccess={handleSuccess}
+cookiePolicy="single_host_origin"
 onFailure={handleFailure} />
 </div>
       </form>

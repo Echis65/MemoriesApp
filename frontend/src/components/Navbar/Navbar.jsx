@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {  AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core"
 import { NavLink } from "react-router-dom"
 import useStyles from "./styles.js"
@@ -6,7 +6,12 @@ import useStyles from "./styles.js"
 
 export default function Navbar() {
     const classes = useStyles()
-    const user = null;
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
+    console.log(user)
+    let token = user?.tokenId
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem("profile")))  
+    }, [token])
   return (
     <AppBar className={classes.appBar} position="sticky" color="inherit">
         <div className={classes.brandContainer}>
@@ -19,13 +24,13 @@ export default function Navbar() {
         {
             (user) ? (
                 <div className={classes.profile}>
-                <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-                <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
+               <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
+                <Typography className={classes.userName} variant="h6"> {user.result.name}</Typography>
                 <Button variant="contained" className={classes.signout} color="secondary">Sign Out</Button>
                 </div>
               
             ): (
-<Button className={classes.signin} variant="contained"  component={NavLink} to="/auth">Sign In</Button>
+<Button className={classes.signin} variant="contained"  component={NavLink} to="/auth" color='secondary'>Sign In</Button>
             )
         }
        </Toolbar>
