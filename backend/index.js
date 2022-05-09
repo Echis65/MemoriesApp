@@ -5,6 +5,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 
 import postRoutes from "./Routes/posts.js"
+import authRoutes from "./Routes/auth.js"
 
 
 const app = express()
@@ -16,6 +17,7 @@ app.use( bodyParser.urlencoded( { limit: "30mb", extended: true } ) )
 
 app.use( cors() );
 app.use( "/posts", postRoutes )
+app.use("/auth", authRoutes)
 
 app.get("/", (req, res) => {
     res.send("Welcome to Memories Api")

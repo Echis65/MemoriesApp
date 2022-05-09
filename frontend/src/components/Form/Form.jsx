@@ -21,6 +21,14 @@ export default function Form({currentId, setCurrentId})
    useEffect(()=>{
     if(post) setPostData(post)
    }, [post])
+const handleChange = (e) =>{
+    e.preventDefault()
+    if(e.target.name === "tags"){
+        setPostData({...postData, [e.target.name] : e.target.value.split(",")})
+    }else{
+        setPostData({...postData, [e.target.name] : e.target.value})
+    }
+}
     const clear = () =>
     {
          setCurrentId(null);
@@ -46,10 +54,10 @@ export default function Form({currentId, setCurrentId})
                 <Typography variant="h6">
                    {currentId ? "Editing " : "Create "}Your Memory
                 </Typography>
-                <TextField className={classes.form_field} label="Creator" variant="outlined" name="creator" required fullWidth value={postData.creator} onChange={( e ) => setPostData( { ...postData, creator: e.target.value } )} />
-                <TextField className={classes.form_field} label="Title" variant="outlined" name="title" fullWidth value={postData.title} onChange={( e ) => setPostData( { ...postData, title: e.target.value } )} />
-                <TextField className={classes.form_field} label="Message" variant="outlined" name="message" fullWidth value={postData.message} onChange={( e ) => setPostData( { ...postData, message: e.target.value } )} />
-                <TextField className={classes.form_field} label="Tags(Comma separated)" variant="outlined" name="tags" fullWidth value={postData.tags} onChange={( e ) => setPostData( { ...postData, tags: e.target.value.split(",") } )} />
+                <TextField className={classes.form_field} label="Creator" variant="outlined" name="creator" required fullWidth value={postData.creator} onChange={handleChange} />
+                <TextField className={classes.form_field} label="Title" variant="outlined" name="title" fullWidth value={postData.title} onChange={handleChange} />
+                <TextField className={classes.form_field} label="Message" variant="outlined" name="message" fullWidth value={postData.message} onChange={handleChange} />
+                <TextField className={classes.form_field} label="Tags(Comma separated)" variant="outlined" name="tags" fullWidth value={postData.tags} onChange={handleChange} />
                 <div className={classes.fileInput}>
                     <FileBase
                         type="file"

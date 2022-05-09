@@ -34,18 +34,17 @@ fontFamily: 'Dancing Script',
   profile: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '400px',
   },
   userName: {
     display: 'flex',
     alignItems: 'center',
+    marginRight: "10px"
   },
   brandContainer: {
     display: 'flex',
     alignItems: 'center',
   },
   purple: {
-    /* color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500], */
+   marginRight: "10px"
   },
 }));

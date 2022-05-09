@@ -12,7 +12,6 @@ export default function Navbar() {
     const history = useNavigate()
     const location = useLocation()
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
-    console.log(user)
     const logout = () => {
       dispatch({type : LOGOUT})
       history("/")
@@ -32,9 +31,8 @@ export default function Navbar() {
        <Toolbar className={classes.toolbar}>
         {
             (user) ? (
-                <div className={classes.profile}>
-               <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-                <Typography className={classes.userName} variant="h6"> {user.result.name}</Typography>
+                <div className={classes.profile}> 
+                <Typography className={classes.userName} > <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>Hi, {user.result.givenName}</Typography>
                 <Button variant="contained" className={classes.signout} color="secondary" onClick={logout}>Sign Out</Button>
                 </div>
               

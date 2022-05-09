@@ -6,6 +6,7 @@ import  { LockOutlined } from "@material-ui/icons"
 import GoogleLogin from "react-google-login"
 import { AUTH } from "../../constants/ActionTypes"
 import { useNavigate } from 'react-router-dom'
+import { signUp, signIn} from "../../actions/auth"
 import useStyles from "./styles"
 
 export default function Auth() {
@@ -13,9 +14,17 @@ const classes = useStyles();
 const [showPassword, setShowPassword] = useState(false);
 const dispatch = useDispatch()
 const history = useNavigate()
+const [formData, setFormData] = useState({
+  "firstName" : "",
+  "lastName" : "",
+  "email" : "",
+  "password" : "",
+  "confirmPassword" : ""
+})
 const handleShowPassword = () => setShowPassword(previousVal => !previousVal)
-const handleSubmit = () => {
-  console.log(1)
+const handleSubmit = (e) => {
+  e.preventDefault()
+ (isSignUp ? dispatch(signUp(...formData, history)) : dispatch(signIn(...formData, history)))
 }
 const handleSuccess = async(res) => {
 let result = res?.profileObj;
@@ -31,8 +40,8 @@ const handleFailure = (error) => {
   console.log(error)
   console.log("Error Signing in with google. Try again Later")
 }
-const handleChange = () => {
-
+const handleChange = (e) => {
+  setFormData({...formData, [e.target.name] : e.target.value})
 }
 const [isSignUp, setIsSignUp] = useState(false)
 const switchForm = () => {

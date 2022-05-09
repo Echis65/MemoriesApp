@@ -32,7 +32,7 @@ export default function Posts({post, setCurrentId})
             {post.title}
           </Typography>
         <CardContent>
-        <Typography variant="h5" gutterBottom className={classes.message}>
+        <Typography  gutterBottom className={classes.message}>
             {post.message}
           </Typography>
         </CardContent>
