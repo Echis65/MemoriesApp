@@ -13,7 +13,6 @@ const postSchema = mongoose.Schema(
         },
         tags: [String],
         message: String,
-        comments:[String],
         creator: String,
         selectedFile: String
     }
