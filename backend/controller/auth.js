@@ -1,7 +1,7 @@
 import usersModel from "../model/usersModel.js"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
-import  Mongoose  from "mongoose"
+
 
 export const signUp = async(req, res) => {
     const {firstName, lastName, email, password, confirmPassword } = req.body

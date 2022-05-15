@@ -23,8 +23,12 @@ const [formData, setFormData] = useState({
 })
 const handleShowPassword = () => setShowPassword(previousVal => !previousVal)
 const handleSubmit = (e) => {
-  e.preventDefault()
- (isSignUp ? dispatch(signUp(...formData, history)) : dispatch(signIn(...formData, history)))
+ e.preventDefault()
+ if(isSignUp){
+dispatch(signUp(formData, history))
+ }else{
+  dispatch(signIn(formData, history))
+ }
 }
 const handleSuccess = async(res) => {
 let result = res?.profileObj;
@@ -64,9 +68,9 @@ const switchForm = () => {
           </>
         )}
         <Input name='email' label="Email Address" handleChange={handleChange}  type="email" />  
-        <Input name='password' label="Password" handleChange={handleChange}    type={setShowPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />  
+        <Input name='password' label="Password" handleChange={handleChange}    type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />  
         {isSignUp && (
-          <Input name="confirmPassword" label="Confirm Password" handleChange={handleChange}  ></Input>
+          <Input name="confirmPassword" label="Confirm Password" handleChange={handleChange}  type="password"></Input>
         )
         }
       </Grid>
