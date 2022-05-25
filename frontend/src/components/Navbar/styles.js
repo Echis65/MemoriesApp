@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { purple } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   appBar: {
@@ -45,6 +46,8 @@ fontFamily: 'Dancing Script',
     alignItems: 'center',
   },
   purple: {
-   marginRight: "10px"
+    color: theme.palette.getContrastText(purple[500]),
+    backgroundColor: purple[500],
+    marginRight : "10px"
   },
 }));

@@ -32,7 +32,7 @@ export default function Navbar() {
         {
             (user) ? (
                 <div className={classes.profile}> 
-                <Typography className={classes.userName} > <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>Hi, {user.result.givenName}</Typography>
+                <Typography className={classes.userName} > <Avatar className={classes.purple} alt={user.result.givenName} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>Hi, {user.result.givenName}</Typography>
                 <Button variant="contained" className={classes.signout} color="secondary" onClick={logout}>Sign Out</Button>
                 </div>
               

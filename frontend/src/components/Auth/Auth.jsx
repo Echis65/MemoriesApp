@@ -15,8 +15,8 @@ const [showPassword, setShowPassword] = useState(false);
 const dispatch = useDispatch()
 const history = useNavigate()
 const [formData, setFormData] = useState({
-  "firstName" : "",
-  "lastName" : "",
+  "givenName" : "",
+  "familyName" : "",
   "email" : "",
   "password" : "",
   "confirmPassword" : ""
@@ -63,8 +63,8 @@ const switchForm = () => {
       <Grid container spacing={2}>
         {isSignUp && (
           <>
-          <Input name='firstName' label="First Name" handleChange={handleChange} autoFocus   sm={6} half/>   
-          <Input name='lastName' label="Last Name" handleChange={handleChange}  half  sm={6} />    
+          <Input name='givenName' label="First Name" handleChange={handleChange} autoFocus   sm={6} half/>   
+          <Input name='familyName' label="Last Name" handleChange={handleChange}  half  sm={6} />    
           </>
         )}
         <Input name='email' label="Email Address" handleChange={handleChange}  type="email" />  
