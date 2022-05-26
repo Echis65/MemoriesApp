@@ -9,10 +9,10 @@ import useStyles from "./style.jsx"
 export default function Form({currentId, setCurrentId})
 { 
     const classes = useStyles()
+    const user = JSON.parse(localStorage.getItem("profile"))
     let post = useSelector(state => currentId ? state.post.find((p) => p._id === currentId): null)
     const dispatch = useDispatch()
     const [postData, setPostData] = useState( {
-        creator: "",
         title: "",
         message: "",
         tags: "",
@@ -21,6 +21,7 @@ export default function Form({currentId, setCurrentId})
    useEffect(()=>{
     if(post) setPostData(post)
    }, [post])
+  
 const handleChange = (e) =>{
     e.preventDefault()
     if(e.target.name === "tags"){
@@ -32,7 +33,7 @@ const handleChange = (e) =>{
     const clear = () =>
     {
          setCurrentId(null);
-         setPostData(  {creator: "",
+         setPostData(  {
          title: "",
          message: "",
          tags: "",
@@ -42,20 +43,29 @@ const handleChange = (e) =>{
     {
         e.preventDefault();
         if(currentId){
-            dispatch(updatedPost(currentId, postData))
+            dispatch(updatedPost(currentId, {...postData, name: user?.result?.name}))
         }else{
-            dispatch( createPost( postData ) )
+            dispatch( createPost({...postData, name : user?.result?.name} ) )
         }
         clear();
     }
+
+        if(!user){
+            return(
+                <Paper className={classes.paper}>
+                    <Typography variant="body2" align='center'>Please Sign In to Create or like a post</Typography>
+                </Paper>
+            )
+        }
+  
+    
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" className={classes.form} onSubmit={handleSubmit}>
                 <Typography variant="h6">
                    {currentId ? "Editing " : "Create "}Your Memory
                 </Typography>
-                <TextField className={classes.form_field} label="Creator" variant="outlined" name="creator" required fullWidth value={postData.creator} onChange={handleChange} />
-                <TextField className={classes.form_field} label="Title" variant="outlined" name="title" fullWidth value={postData.title} onChange={handleChange} />
+                <TextField className={classes.form_field} label="Title" required variant="outlined" name="title" fullWidth value={postData.title} onChange={handleChange} />
                 <TextField className={classes.form_field} label="Message" variant="outlined" name="message" fullWidth value={postData.message} onChange={handleChange} />
                 <TextField className={classes.form_field} label="Tags(Comma separated)" variant="outlined" name="tags" fullWidth value={postData.tags} onChange={handleChange} />
                 <div className={classes.fileInput}>

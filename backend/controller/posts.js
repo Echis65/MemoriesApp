@@ -18,7 +18,7 @@ export const getPosts = async ( req, res ) =>
 export const createPost = async ( req, res ) =>
 {
     const post = req.body;
-    const newPost = new postDetails( post )
+    const newPost = new postDetails({...post, creator : req.userId, createdAt : new Date().toISOString()} )
     try
     {
         await newPost.save()
@@ -46,14 +46,14 @@ export const deletePost = async (req, res) => {
     console.log(1)
 }
 export const likePost = async (req, res) => {
-    const {id } = req.params;
+    const { id } = req.params;
     // check if user is authenticated
     if(!req.userId) return res.status(401).json({message : "Unauthenticated"})
     if(!Mongoose.Types.ObjectId.isValid(id)) res.status(409).send("Post not found");
 
     const post = await postDetails.findById(id)
     /// If user Id is alredy in the like section
-    const index = post.likes.findById((id) => id === String(req.userId))
+   const index = post.likes.findIndex((id) => id === String(req.userId))
     if(index === -1){
         //like the post
         post.likes.push(req.userId)
@@ -63,5 +63,5 @@ export const likePost = async (req, res) => {
     }
     const updatedLikedPost = await postDetails.findByIdAndUpdate(id, post, {new : "true"})
     res.json(updatedLikedPost);
-    console.log(1)
+    console.log(post.likes)
 }

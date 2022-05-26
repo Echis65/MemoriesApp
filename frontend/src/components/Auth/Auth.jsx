@@ -32,9 +32,9 @@ dispatch(signUp(formData, history))
 }
 const handleSuccess = async(res) => {
 let result = res?.profileObj;
-let tokenId = res?.tokenId;
+let token = res?.tokenId;
 try {
-  dispatch({type : AUTH, data:{result, tokenId}})
+  dispatch({type : AUTH, data:{result, token}})
 history("/")
 } catch (error) {
   console.log(error)
