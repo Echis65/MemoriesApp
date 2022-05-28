@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import {  AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core"
 import { NavLink, useNavigate, useLocation } from "react-router-dom"
 import useStyles from "./styles.js"
+import decode from "jwt-decode"
 import { LOGOUT } from '../../constants/ActionTypes.js'
 
 
@@ -18,6 +19,11 @@ export default function Navbar() {
       setUser(null)
     }
     useEffect(() => {
+      const token = user?.token;
+      if(token){
+        let decodedToken = decode(token)
+        if(decodedToken * 1000 < new Date().getTime) logout()
+      }
         setUser(JSON.parse(localStorage.getItem("profile")))  
     }, [location])
   return (

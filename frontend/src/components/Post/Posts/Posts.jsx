@@ -33,9 +33,11 @@ export default function Posts({post, setCurrentId})
             <Typography variant="body2">{moment(post.createdAt).local().fromNow()}</Typography>
         </div>
         <div className={classes.overlay2}>
-              <Button style={{color:"white"}} size="small" onClick={() => setCurrentId(post._id)}>
+          {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) &&(
+            <Button style={{color:"white"}} size="small" onClick={() => setCurrentId(post._id)}>
                 <MoreHorizIcon fontSize="medium" titleAccess="Edit"/>
             </Button>
+          )}      
         </div>
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary">
@@ -56,15 +58,18 @@ export default function Posts({post, setCurrentId})
         }>
        <Likes/>
                 </Button>
-                <Button size='small' color='primary' onClick={() => 
-               { let confirmationMessage = window.confirm("Are you sure you want to delete this post");
-                if(confirmationMessage){
-                  dispatch(deletePost(post._id)) 
-                }}
-                }>
-                  <DeleteIcon fontSize="small"/>
-                  Delete
-                </Button>
+                {(user?.result?.googleId === post?.creator || user?.result._id === post?.creator) &&(
+                     <Button size='small' color='primary' onClick={() => 
+                      { let confirmationMessage = window.confirm("Are you sure you want to delete this post");
+                       if(confirmationMessage){
+                         dispatch(deletePost(post._id)) 
+                       }}
+                       }>
+                         <DeleteIcon fontSize="small"/>
+                         Delete
+                       </Button>
+                )}
+             
         </CardActions>
       </Card>
     )
